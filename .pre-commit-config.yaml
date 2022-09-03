@@ -26,3 +26,18 @@ repos:
     hooks:
       - id: flake8
         additional_dependencies: [ flake8-typing-imports==1.10.0 ]
+
+  - repo: https://github.com/python-poetry/poetry.git
+    rev: 1.2.0
+    hooks:
+      - id: poetry-export
+  - repo: https://github.com/bruno-fs/cachito.git
+    rev: 736d7c5
+    hooks:
+      - id: update-build-requirements
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.8.0
+    hooks:
+      - id: pip-compile
+        name: pip-compile requirements-build.in
+        args: [requirements-build.in, -o, requirements-build.txt, --allow-unsafe]
